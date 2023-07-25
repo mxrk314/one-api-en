@@ -1,7 +1,7 @@
 # Dockerfile for justsong/one-api-en
 
 # Set the base image
-FROM justsong/one-api-en
+FROM justsong/one-api-en:latest
 
 # Maintainer
 LABEL maintainer="justsong"
