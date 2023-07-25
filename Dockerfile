@@ -12,9 +12,6 @@ COPY . /app
 # Set the working directory
 WORKDIR /app
 
-# Install the required dependencies
-RUN pip install -r requirements.txt
-
 # Expose the port
 EXPOSE 5000
 
