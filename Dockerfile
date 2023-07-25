@@ -1,29 +1,22 @@
 # Dockerfile for justsong/one-api-en
-# Maintainer: justsong <justsong@example.com>
 
-FROM node:12-alpine
+# Set the base image
+FROM justsong/one-api-en
 
-# Set environment variables
-ENV TZ Asia/Shanghai
+# Maintainer
+LABEL maintainer="justsong"
 
-# Create app directory
-WORKDIR /usr/src/app
+# Copy the application files
+COPY . /app
 
-# Install app dependencies
-COPY package*.json ./
-RUN npm install
+# Set the working directory
+WORKDIR /app
 
-# Bundle app source
-COPY . .
+# Install the required dependencies
+RUN pip install -r requirements.txt
 
-# Expose port
-EXPOSE 3000
+# Expose the port
+EXPOSE 5000
 
-# Run the app
-CMD ["npm", "start"]
-
-# Set restart policy
-RESTART always
-
-# Run the container with the given name
-CMD ["docker", "run", "--name", "one-api", "-d", "--restart", "always", "-p", "3000:3000", "-e", "TZ=Asia/Shanghai", "-v", "/home/ubuntu/data/one-api:/data", "justsong/one-api-en"]
+# Run the application
+CMD ["python", "app.py"]
