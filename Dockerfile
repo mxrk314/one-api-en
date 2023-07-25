@@ -22,9 +22,6 @@ EXPOSE 3000
 # Run the app
 CMD ["npm", "start"]
 
-# Create a volume for data persistence
-VOLUME /data
-
 # Set restart policy
 RESTART always
 
